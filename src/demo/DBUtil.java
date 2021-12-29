@@ -3,6 +3,8 @@ package demo;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Properties;
 
 public class DBUtil {
@@ -29,6 +31,18 @@ public class DBUtil {
     {
         initialize();
         return DriverManager.getConnection(jdbcUrl);
+    }
+
+    public static void close(ResultSet rs) throws Exception
+    {
+        if (rs != null)
+            rs.close();
+    }
+
+    public static void close(Statement stm) throws Exception
+    {
+        if (stm != null)
+            stm.close();
     }
 
     public static void close(Connection conn) throws Exception
